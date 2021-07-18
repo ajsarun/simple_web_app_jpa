@@ -17,9 +17,8 @@ import javax.persistence.Persistence;
  * @author sarun
  */
 public class EmployeeTable {
-    
+    private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("EmployeeWebAppPU");
     public static List<Employee> findAllEmployee() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EmployeeWebAppPU");
         EntityManager em = emf.createEntityManager();
         List<Employee> empList = null;
         try {
@@ -30,12 +29,10 @@ public class EmployeeTable {
         }
         finally {
             em.close();
-            emf.close();
         }
         return empList;
     }
     public static Employee findEmployeeById(int id) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EmployeeWebAppPU");
         EntityManager em = emf.createEntityManager();
         Employee emp = null;
         try {
@@ -45,13 +42,11 @@ public class EmployeeTable {
         }
         finally {
             em.close();
-            emf.close();
         }
         return emp;
     }
     
     public static int updateEmployee(Employee emp) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EmployeeWebAppPU");
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
@@ -69,13 +64,11 @@ public class EmployeeTable {
         }
         finally {
             em.close();
-            emf.close();
         }
         return 1;
         
     }
     public static int removeEmployee(int id) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EmployeeWebAppPU");
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
@@ -91,14 +84,12 @@ public class EmployeeTable {
         }
         finally {
             em.close();
-            emf.close();
         }
         return 1;
     }
     
     
     public static int insertEmployee(Employee emp) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EmployeeWebAppPU");
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
@@ -114,10 +105,7 @@ public class EmployeeTable {
         }
         finally {
             em.close();
-            emf.close();
         }
         return 1;
     }
-    
-
 }
